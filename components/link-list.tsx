@@ -80,19 +80,24 @@ export default function LinkList({ links }: LinkListProps) {
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       {links.map((link, index) => (
         <div key={index} className="relative group">
           <a
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-full py-2.5 px-5 bg-primary text-primary-foreground rounded-md transition-colors duration-300 font-playfair uppercase tracking-wider text-sm sm:text-base relative z-10 hover:bg-accent hover:text-accent-foreground"
+            className="flex items-center justify-center w-full py-3 px-5 bg-primary text-primary-foreground rounded-md 
+                      transition-all duration-300 font-playfair uppercase tracking-wider text-sm sm:text-base 
+                      relative z-10 hover:bg-accent hover:text-accent-foreground hover:shadow-md 
+                      hover:translate-y-[-2px] active:translate-y-[0px]"
           >
-            <span className="mr-2">{getIcon(link.title)}</span>
-            {link.title}
+            <span className="mr-3 group-hover:scale-110 transition-transform duration-300">{getIcon(link.title)}</span>
+            <span className="transition-transform duration-300 group-hover:tracking-widest">{link.title}</span>
           </a>
-          <FloralPattern size={24} />
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <FloralPattern size={24} />
+          </div>
         </div>
       ))}
     </div>

@@ -20,23 +20,36 @@ export default function NamasteBanner({ text }: NamasteBannerProps) {
 
     let position = 0
     const speed = 0.5
+    let animationId: number
+    let isPaused = false
 
     const animate = () => {
-      position -= speed
+      if (!isPaused) {
+        position -= speed
 
-      // Reset position when text has scrolled completely
-      if (Math.abs(position) >= scrollWidth / 2) {
-        position = 0
+        // Reset position when text has scrolled completely
+        if (Math.abs(position) >= scrollWidth / 2) {
+          position = 0
+        }
+
+        if (container) {
+          container.style.transform = `translateX(${position}px)`
+        }
       }
 
-      if (container) {
-        container.style.transform = `translateX(${position}px)`
-      }
-
-      requestAnimationFrame(animate)
+      animationId = requestAnimationFrame(animate)
     }
 
-    const animationId = requestAnimationFrame(animate)
+    animationId = requestAnimationFrame(animate)
+
+    // Pause animation on hover
+    container.addEventListener("mouseenter", () => {
+      isPaused = true
+    })
+
+    container.addEventListener("mouseleave", () => {
+      isPaused = false
+    })
 
     return () => {
       cancelAnimationFrame(animationId)
@@ -44,10 +57,10 @@ export default function NamasteBanner({ text }: NamasteBannerProps) {
   }, [text])
 
   return (
-    <div className="overflow-hidden py-2 relative border-y border-accent">
+    <div className="overflow-hidden py-3 relative border-y border-accent hover:border-primary transition-colors duration-300 cursor-default">
       <div
         ref={containerRef}
-        className="whitespace-nowrap font-playfair text-2xl sm:text-3xl text-foreground transition-colors duration-300"
+        className="whitespace-nowrap font-playfair text-2xl sm:text-3xl text-foreground transition-all duration-300 hover:text-primary"
         style={{ willChange: "transform" }}
       >
         {text} • {text} • {text} • {text}

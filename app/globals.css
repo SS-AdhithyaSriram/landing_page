@@ -3,61 +3,93 @@
 @tailwind utilities;
 
 :root {
-    --background: #fefae0; /* cornsilk - roman-background-light - Solid background again */
-    --foreground: #283618; /* pakistan-green - roman-text-dark */
-    --card: #fefae0;
-    --card-foreground: #27272A;
-    --popover: #fefae0;
-    --popover-foreground: #27272A;
-    --primary: #bc6c25;
-    --primary-foreground: #fefae0;
-    --secondary: #606c38;
-    --secondary-foreground: #fefae0;
-    --muted: #dda15e;
-    --muted-foreground: #606c38;
-    --accent: #dda15e;
-    --accent-foreground: #27272A;
-    --destructive: #bc6c25;
-    --destructive-foreground: #fefae0;
-    --border: #dda15e;
-    --input: #dda15e;
-    --ring: #bc6c25;
-    --radius: 0.5rem;
+  --background: #fefae0; /* cornsilk - roman-background-light - Solid background again */
+  --foreground: #283618; /* pakistan-green - roman-text-dark */
+  --card: #fefae0;
+  --card-foreground: #27272a;
+  --popover: #fefae0;
+  --popover-foreground: #27272a;
+  --primary: #bc6c25;
+  --primary-foreground: #fefae0;
+  --secondary: #606c38;
+  --secondary-foreground: #fefae0;
+  --muted: #dda15e;
+  --muted-foreground: #606c38;
+  --accent: #dda15e;
+  --accent-foreground: #27272a;
+  --destructive: #bc6c25;
+  --destructive-foreground: #fefae0;
+  --border: #dda15e;
+  --input: #dda15e;
+  --ring: #bc6c25;
+  --radius: 0.5rem;
 
-    /* Transition for smooth dark mode switch - KEEP THIS */
-    transition: background-color 0.3s ease, color 0.3s ease;
+  /* Transition for smooth dark mode switch - KEEP THIS */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark {
-    --background: #283618; /* pakistan-green - roman-background-dark - Solid dark background */
-    --foreground: #fefae0;
-    --card: #283618;
-    --card-foreground: #fefae0;
-    --popover: #283618;
-    --popover-foreground: #fefae0;
-    --primary: #fefae0;
-    --primary-foreground: #283618;
-    --secondary: #606c38;
-    --secondary-foreground: #fefae0;
-    --muted: #606c38;
-    --muted-foreground: #dda15e;
-    --accent: #dda15e;
-    --accent-foreground: #283618;
-    --destructive: #bc6c25;
-    --destructive-foreground: #283618;
-    --border: #606c38;
-    --input: #606c38;
-    --ring: #dda15e;
+  --background: #283618; /* pakistan-green - roman-background-dark - Solid dark background */
+  --foreground: #fefae0;
+  --card: #283618;
+  --card-foreground: #fefae0;
+  --popover: #283618;
+  --popover-foreground: #283618;
+  --primary: #fefae0;
+  --primary-foreground: #283618;
+  --secondary: #606c38;
+  --secondary-foreground: #fefae0;
+  --muted: #606c38;
+  --muted-foreground: #dda15e;
+  --accent: #dda15e;
+  --accent-foreground: #283618;
+  --destructive: #bc6c25;
+  --destructive-foreground: #283618;
+  --border: #606c38;
+  --input: #606c38;
+  --ring: #dda15e;
 
-    /* Transition for smooth dark mode switch - KEEP THIS */
-    transition: background-color 0.3s ease, color 0.3s ease;
+  /* Transition for smooth dark mode switch - KEEP THIS */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Global transition for all color changes */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Custom cursor styles */
+html {
+  cursor: default;
+}
+
+a,
+button,
+[role="button"] {
+  cursor: pointer;
+}
 
 .font-playfair {
-    font-family: var(--font-playfair);
+  font-family: var(--font-playfair);
 }
 
 .font-noto {
-    font-family: var(--font-noto);
+  font-family: var(--font-noto);
+}
+
+/* Add hover effects to links */
+@layer components {
+  .link-hover-effect {
+    @apply relative overflow-hidden;
+  }
+
+  .link-hover-effect::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 ease-in-out;
+  }
+
+  .link-hover-effect:hover::after {
+    @apply w-full;
+  }
 }

@@ -9,7 +9,6 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
-  preload: true,
   weight: ["400", "500", "600", "700"],
 })
 
@@ -17,7 +16,6 @@ const noto = Noto_Sans({
   subsets: ["latin"],
   variable: "--font-noto",
   display: "swap",
-  preload: true,
   weight: ["400", "500", "600", "700"],
 })
 
@@ -34,8 +32,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${playfair.variable} ${noto.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
+      </head>
+      <body className={`${playfair.variable} ${noto.variable} font-sans antialiased bg-background text-foreground`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
       </body>

@@ -18,9 +18,10 @@ const nextConfig = {
   },
   // Optimize build performance
   experimental: {
+    // Disable critters which is causing the build error
+    optimizeCss: false,
     // Disable some experimental features to reduce memory usage
     serverComponentsExternalPackages: [],
-    optimizeCss: true,
   },
   // Reduce the size of the build output
   output: 'standalone',
