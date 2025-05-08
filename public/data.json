@@ -1,0 +1,18 @@
+{
+  "bannerText": "Namaste! I am AdhithyaSriram Suresh",
+  "profile": {
+    "name": "AdhithyaSriram Suresh",
+    "bio": "Hoping against hope, doing what we do",
+    "profilePicture": "/placeholder.svg?height=128&width=128"
+  },
+  "links": [
+    { "title": "Instagram", "url": "https://www.instagram.com/thisisadhithyasriram/" },
+    { "title": "LinkedIn", "url": "https://www.linkedin.com/in/thisisadhithyasriram/" },
+    { "title": "Twitter", "url": "https://x.com/Adhirocks05" },
+    { "title": "Topmate", "url": "https://topmate.io/adhithyasriram_suresh" },
+    { "title": "Projects", "url": "https://your-projects-placeholder.com" },
+    { "title": "Email - Adhirocks05", "url": "mailto:adhirocks05@gmall.com" },
+    { "title": "Email - Contact Adhithya", "url": "mailto:contact.adhithyasriram@gmail.com" },
+    { "title": "Email - Saladicious", "url": "mailto:saladiciousblr@gmail.com" }
+  ]
+}
